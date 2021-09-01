@@ -79,7 +79,7 @@ def transform():
          from scipy.ndimage import distance_transform_edt
          img = cv.imread(cv.samples.findFile(path))
          dt = distance_transform_edt(img)
-         plt.imshow(dt)   #this is the landscape we get using watershed algorithm.
+         
          labels = morphology.watershed(-dt)
          img_color=color.label2rgb(labels, image=img)
          cv.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], 'output.jpg'),img_color)
