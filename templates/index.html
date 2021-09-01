@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+  </style>
+  <title>Transforming Images to required options</title>
+</head>
+
+<body>
+  <div>
+      <p>  Please Upload the image and select the transformation from the drop down and click on transform button 
+      and wait for the image </p>
+  </div>
+
+<!-- Give the list of transform drop down here  -->
+<div style="width: 100%; overflow: hidden;">
+  <form action="transform" method = "POST"   enctype = "multipart/form-data">  
+      <div style="width: 600px; float: left;"> 
+        <label for='transformation'>Select the Transformation from below dropdown</label>
+        <select name="transformation" id="transformation" value='select' autofocus required >
+          <option value=""  disabled selected >Select your option</option>
+          <option value="grayscale" id='grayscale' name='grayscale'>Gray Scale</option>
+          <option value="denoising" id='denoising' name='denoising'>Denoising</option>
+          <option value="blur" id='blur' name='blur'>Blur/Sharpening Image</option>
+          <option value="perspective" id='perspective' name='perspective'>Perspective Transformation</option>
+          <option value="edgedetector" id='edgedetector' name='edgedetector'>Canny Edge Detector</option>
+          <option value="rotation" id='rotation' name='rotation'>Image Rotation</option>
+          <option value="mirror" id='mirror' name='mirror'>Mirror Image</option>
+          <option value="morphology" id='morphology' name='morphology'>Coloring Image</option>
+        </select>
+     </div>
+     <div style="width: 600px; float: right;"> 
+          <input type="file" title="Upload image to be transformed" name='uploaded_image' id="uploaded_image" value="uploaded_image" required>
+          <button class="ba b--black-20 ph3 pv2 br2" type="submit" >Transform Image</button>
+     </div>
+
+  
+  </form>
+</div>
+{{grey}}
+{%if response %}
+  <div class="row">
+      <div class="column">
+        <img src="/static/input" alt="Original Image Uploded" style="width:70%">
+      </div>
+      <div class="column">
+        <img src="/static/output.jpg" alt="Transformed image" style="width:70%">
+      </div>
+{%else%}
+<h2>{{note}}</h2>
+{%endif%}
+</div>
+
+</body>
+</html>
