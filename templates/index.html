@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Cache-control" content="no-cache">
   <style>
 .row {
   display: flex;
@@ -42,22 +43,25 @@
           <button class="ba b--black-20 ph3 pv2 br2" type="submit" >Transform Image</button>
      </div>
 
-  
   </form>
+ 
 </div>
-{{grey}}
-{%if response %}
-  <div class="row">
-      <div class="column">
-        <img src="/static/input" alt="Original Image Uploded" style="width:70%">
+
+<div>
+  {{grey}}
+  {%if response %}
+      <div class="row">
+        <div class="column">
+          <img src="static\{{input}}" alt="Original Image Uploded" style="width:70%">
+        </div>
+        <div class="column">
+          <img src="static\{{output}}"  alt="Transformed image" id='webcam' style="width:70%">
       </div>
-      <div class="column">
-        <img src="/static/output.jpg" alt="Transformed image" style="width:70%">
-      </div>
-{%else%}
-<h2>{{note}}</h2>
-{%endif%}
-</div>
+  {%else%}
+  <h2>{{note}}</h2>
+  {%endif%}
+ </div>  
+ 
 
 </body>
 </html>
