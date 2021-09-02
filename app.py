@@ -31,6 +31,8 @@ def transform():
       
       f = request.files['uploaded_image']
       path=os.path.join(app.config['UPLOAD_FOLDER'], 'input')
+      os.remove(path) 
+      os.remove(os.path.join(app.config['UPLOAD_FOLDER'], 'output.jpg'))
       f.save(os.path.join(app.config['UPLOAD_FOLDER'], 'input'))
       selected=request.form.get('transformation')
 
